@@ -9,39 +9,7 @@ import { TaskInput } from './components/TaskInput/TaskInput';
 import { Task } from './types/types';
 import { TaskList } from './components/TaskList/TaskList';
 
-const API_URL = 'http://localhost:3000/api';
-
-// export const App = () => {
-//   const [tasks, setTasks] = useState<Task[]>([]);
-
-//   const addTask = (taskText: string) => {
-//     const newTask = { text: taskText, isDone: false };
-//     setTasks([...tasks, newTask]);
-//   };
-
-//   const toggleTaskDone = (index: number) => {
-//     const updatedTasks = tasks.map((task, i) =>
-//       i === index ? { ...task, isDone: !task.isDone } : task
-//     );
-//     setTasks(updatedTasks);
-//   };
-
-//   const deleteTask = (index: number) => {
-//     const updatedTasks = tasks.filter((_, i) => i !== index);
-//     setTasks(updatedTasks);
-//   };
-
-//   return (
-//     <div className='container'>
-//       <TaskInput addTask={addTask} />
-//       <TaskList
-//         tasks={tasks}
-//         toggleTaskDone={toggleTaskDone}
-//         deleteTask={deleteTask}
-//       />
-//     </div>
-//   );
-// };
+const API_URL = 'fox-todo-server.vercel.app';
 
 const fetchTasks = async (): Promise<Task[]> => {
   const { data } = await axios.get<{ message: string; tasks: Task[] }>(
