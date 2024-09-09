@@ -5,6 +5,8 @@ import cors from 'cors';
 
 import { tasksRouter } from './routes/tasksRouter.js';
 
+dotenv.config();
+
 const app = express();
 
 app.use(
@@ -13,9 +15,7 @@ app.use(
   })
 );
 
-mongoose.connect(
-  'mongodb+srv://k_kovshykova:verystrongpassword@kkovcluster.gwnk0hh.mongodb.net/fox-todo?retryWrites=true&w=majority&appName=kkovCluster'
-);
+mongoose.connect(import.meta.env.MONGODB_URI);
 
 mongoose.connection.on('connected', () => {
   console.log('Connected to MongoDB');
