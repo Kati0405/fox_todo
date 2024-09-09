@@ -1,0 +1,128 @@
+li {
+  list-style-type: none;
+}
+
+.task-box {
+  margin-right: 2rem;
+  margin-top: 1rem;
+  width: calc(100vw - 4em);
+  min-height: 2rem;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+.task-box:hover {
+  background-color: #efefef;
+}
+
+.task-box:hover .text-field {
+  background-color: #efefef;
+}
+
+.checkbox {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 0.1rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox:checked::before {
+  content: '\2713';
+  font-size: 0.8rem;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.checkbox:checked {
+  background-color: #00ae1c;
+}
+
+.text-field-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.text-field {
+  width: calc(100% - 20px);
+  height: 50px;
+  line-height: 30px;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+  resize: none;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  vertical-align: middle;
+}
+
+.text-field:focus {
+  outline: none;
+}
+
+.crossed-out {
+  text-decoration: line-through;
+}
+
+.task-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.buttons-container {
+  display: none;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.edit-btn,
+.delete-btn,
+.confirm-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.task-box:hover .buttons-container {
+  display: flex;
+}
+
+.task-box:hover .buttons-container .confirm-btn {
+  display: none;
+}
+
+.task-box.editing .buttons-container .edit-btn {
+  display: none;
+}
+
+.task-box.editing .buttons-container .delete-btn {
+  display: none;
+}
+
+.task-box.editing .buttons-container .confirm-btn {
+  display: block;
+}
+
+.clear-tasks-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  min-width: 18.75rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  background-color: transparent;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
