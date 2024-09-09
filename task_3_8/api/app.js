@@ -9,7 +9,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'http://localhost:5174',
+    origin: 'https://fox-todo.vercel.app',
   })
 );
 
