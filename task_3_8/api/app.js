@@ -13,6 +13,16 @@ app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
+mongoose.connection.on('error', (err) => {
+  console.error('Error connecting to MongoDB:', err);
+  process.exit(1); // Exit the process to avoid hanging
+});
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+});
+
 app.use(
   cors({
     origin: 'https://fox-todo.vercel.app',
