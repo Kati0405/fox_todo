@@ -2,11 +2,11 @@ import express from 'express';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import dotenv from 'dotenv';
 
 import { tasksRouter } from './routes/tasksRouter.js';
 
 dotenv.config();
-
 const app = express();
 
 app.use(
@@ -15,7 +15,7 @@ app.use(
   })
 );
 
-mongoose.connect(import.meta.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI);
 
 mongoose.connection.on('connected', () => {
   console.log('Connected to MongoDB');
