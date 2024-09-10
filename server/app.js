@@ -9,6 +9,10 @@ const app = express();
 
 app.use(cors());
 
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
+
 mongoose.connect(
   'mongodb+srv://k_kovshykova:verystrongpassword@kkovcluster.gwnk0hh.mongodb.net/fox-todo?retryWrites=true&w=majority&appName=kkovCluster'
 );
