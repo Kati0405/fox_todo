@@ -9,7 +9,7 @@ import { TaskInput } from './components/TaskInput/TaskInput';
 import { Task } from './types/types';
 import { TaskList } from './components/TaskList/TaskList';
 
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://fox-todo-gzwf.vercel.app/api';
 
 // export const App = () => {
 //   const [tasks, setTasks] = useState<Task[]>([]);
