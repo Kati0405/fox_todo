@@ -9,6 +9,10 @@ import { tasksRouter } from './routes/tasksRouter.js';
 dotenv.config();
 const app = express();
 
+app.use('/', (req, res) => {
+  res.send('server is running');
+});
+
 app.use(
   cors({
     origin: 'https://fox-todo.vercel.app',
