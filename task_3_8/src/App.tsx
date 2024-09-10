@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -10,38 +9,6 @@ import { Task } from './types/types';
 import { TaskList } from './components/TaskList/TaskList';
 
 const API_URL = 'https://fox-todo-server.vercel.app';
-
-// export const App = () => {
-//   const [tasks, setTasks] = useState<Task[]>([]);
-
-//   const addTask = (taskText: string) => {
-//     const newTask = { text: taskText, isDone: false };
-//     setTasks([...tasks, newTask]);
-//   };
-
-//   const toggleTaskDone = (index: number) => {
-//     const updatedTasks = tasks.map((task, i) =>
-//       i === index ? { ...task, isDone: !task.isDone } : task
-//     );
-//     setTasks(updatedTasks);
-//   };
-
-//   const deleteTask = (index: number) => {
-//     const updatedTasks = tasks.filter((_, i) => i !== index);
-//     setTasks(updatedTasks);
-//   };
-
-//   return (
-//     <div className='container'>
-//       <TaskInput addTask={addTask} />
-//       <TaskList
-//         tasks={tasks}
-//         toggleTaskDone={toggleTaskDone}
-//         deleteTask={deleteTask}
-//       />
-//     </div>
-//   );
-// };
 
 const fetchTasks = async (): Promise<Task[]> => {
   const { data } = await axios.get<{ message: string; tasks: Task[] }>(
@@ -87,7 +54,6 @@ const deleteTaskAPI = async (task: Task) => {
 export const App = () => {
   const queryClient = useQueryClient();
 
-  // Fetch tasks
   const {
     data: tasks = [],
     isLoading,
@@ -97,7 +63,6 @@ export const App = () => {
     queryFn: fetchTasks,
   });
 
-  // Add task mutation
   const addTaskMutation = useMutation({
     mutationFn: addTaskAPI,
     onSuccess: () => {
@@ -108,7 +73,6 @@ export const App = () => {
     },
   });
 
-  // Toggle task done mutation
   const toggleTaskDoneMutation = useMutation({
     mutationFn: toggleTaskDoneAPI,
     onSuccess: () => {
@@ -119,7 +83,6 @@ export const App = () => {
     },
   });
 
-  // Edit task mutation
   const editTaskMutation = useMutation({
     mutationFn: editTaskAPI,
     onSuccess: () => {
@@ -129,7 +92,7 @@ export const App = () => {
       console.error('Error editing task:', error);
     },
   });
-  // Delete task mutation
+
   const deleteTaskMutation = useMutation({
     mutationFn: deleteTaskAPI,
     onSuccess: () => {
